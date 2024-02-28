@@ -1,5 +1,7 @@
 from django.shortcuts import render
 
+from myapp.models import ClassRoom
+
 # Create your views here.
 
 def root_page(request):
@@ -34,4 +36,10 @@ def student(request):
     {"name": "Ken", "age": 34, "address": "LTP", "email": "ken@email.com"},
 ]
     return render(request,template_name="myapp/student.html",context={"students":students})
+
+def classroom_query_set(request):
+    
+    classrooms = ClassRoom.objects.all()
+    
+    return render(request,template_name="myapp/classroom_query_set.html", context={"classrooms":classrooms})
     
